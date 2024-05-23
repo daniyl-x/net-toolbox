@@ -13,8 +13,14 @@ def index():
 @app.get("/ping")
 def ping():
     ip = request.args.get("ip")
-    result = subprocess.run(
-            ["ping", "-c", "5", ip],
-            capture_output=True
-            )
+    result = subprocess.run(["ping", "-c", "5", ip], capture_output=True)
+
+    return {"stdout": result.stdout.decode()}
+
+
+@app.get("/dig")
+def dig():
+    domain = request.args.get("domain")
+    result = subprocess.run(["dig", domain], capture_output=True)
+
     return {"stdout": result.stdout.decode()}
