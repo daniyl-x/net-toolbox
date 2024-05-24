@@ -1,4 +1,3 @@
-import subprocess
 from flask import Flask, request
 
 import funs
@@ -18,11 +17,7 @@ def index():
 @app.get("/dig")
 def dig():
     domain = request.args.get("domain")
-    result = subprocess.run(["dig", domain], capture_output=True)
-    data = {
-            "stdout": result.stdout.decode(),
-            "stderr": result.stderr.decode(),
-            }
+    data = funs.run_cmd(["dig", domain])
     data = funs.serialize_json(data)
 
     return data
@@ -31,11 +26,7 @@ def dig():
 @app.get("/ping")
 def ping():
     ip = request.args.get("ip")
-    result = subprocess.run(["ping", "-c", "5", ip], capture_output=True)
-    data = {
-            "stdout": result.stdout.decode(),
-            "stderr": result.stderr.decode(),
-            }
+    data = funs.run_cmd(["ping", "-c", "5", ip])
     data = funs.serialize_json(data)
 
     return data
