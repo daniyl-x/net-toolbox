@@ -19,7 +19,10 @@ def index():
 def dig():
     domain = request.args.get("domain")
     result = subprocess.run(["dig", domain], capture_output=True)
-    data = {"stdout": result.stdout.decode()}
+    data = {
+            "stdout": result.stdout.decode(),
+            "stderr": result.stderr.decode(),
+            }
     data = funs.serialize_json(data)
 
     return data
@@ -29,7 +32,10 @@ def dig():
 def ping():
     ip = request.args.get("ip")
     result = subprocess.run(["ping", "-c", "5", ip], capture_output=True)
-    data = {"stdout": result.stdout.decode()}
+    data = {
+            "stdout": result.stdout.decode(),
+            "stderr": result.stderr.decode(),
+            }
     data = funs.serialize_json(data)
 
     return data
