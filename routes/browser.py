@@ -1,6 +1,4 @@
-from flask import Blueprint
-
-from lib import functions as fn
+from flask import Blueprint, render_template
 
 
 browser = Blueprint("browser", __name__)
@@ -8,7 +6,20 @@ browser = Blueprint("browser", __name__)
 
 @browser.get("/")
 def index():
-    data = {"msg": "Hello, World!"}
-    data = fn.serialize_json(data)
+    template = "index.html"
 
-    return data
+    return render_template(template)
+
+
+@browser.get("/dig")
+def dig():
+    template = "dig.html"
+
+    return render_template(template)
+
+
+@browser.get("/ping")
+def ping():
+    template = "ping.html"
+
+    return render_template(template)
