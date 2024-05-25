@@ -2,15 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}{% endblock title %} - Net-Toolbox</title>
   </head>
 
   <body>
     <nav>
-      <a href="/">Home</a>
-      <a href="/dig">Dig</a>
-      <a href="/ping">Ping</a>
+      <a href="{{ url_for('browser.index') }}">Home</a>
+      <a href="{{ url_for('browser.dig') }}">Dig</a>
+      <a href="{{ url_for('browser.ping') }}">Ping</a>
     </nav>
 
     <div class="content">{% block content %}{% endblock %}</div>
