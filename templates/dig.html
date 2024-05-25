@@ -2,4 +2,15 @@
 
 {% block content %}
   <h1>{% block title %} Dig {% endblock %}</h1>
+
+  <form method="get">
+    <label for="domain">Enter domain:</label>
+    <input type="text" name="domain" />
+  </form>
+  
+  {% if data %}
+    <h3>Result:</h2>
+    <p>{{ data.stderr or data.stdout }}</p>
+  {% endif %}
+
 {% endblock %}

@@ -2,4 +2,15 @@
 
 {% block content %}
   <h1>{% block title %} Ping {% endblock %}</h1>
+
+  <form method="get">
+    <label for="ip">Enter IP:</label>
+    <input type="text" name="ip" />
+  </form>
+  
+  {% if data %}
+    <h3>Result:</h2>
+    <p>{{ data.stderr or data.stdout }}</p>
+  {% endif %}
+
 {% endblock %}
