@@ -10,7 +10,6 @@ api = Blueprint("api", __name__)
 def dig():
     domain = request.args.get("domain")
     data = fn.run_cmd(["dig", domain])
-    data = fn.serialize_json(data)
 
     return data
 
@@ -19,6 +18,5 @@ def dig():
 def ping():
     ip = request.args.get("ip")
     data = fn.run_cmd(["ping", "-c", "5", ip])
-    data = fn.serialize_json(data)
 
     return data
