@@ -20,3 +20,11 @@ def ping():
     data = fn.run_cmd(["ping", "-c", "5", ip])
 
     return data
+
+
+@api.get("/whois")
+def whois():
+    domain = request.args.get("domain")
+    data = fn.run_cmd(["whois", domain])
+
+    return data

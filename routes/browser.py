@@ -40,3 +40,18 @@ def ping():
         return render_template(template, data=data)
     else:
         return render_template(template)
+
+
+@browser.get("/whois")
+def whois():
+    template = "whois.html"
+
+    domain = request.args.get("domain")
+    if domain:
+        url = request.root_url + url_for("api.whois")
+        response = httpx.get(f"{url}?domain={domain}")
+
+        data = response.json()
+        return render_template(template, data=data)
+    else:
+        return render_template(template)
