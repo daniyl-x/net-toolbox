@@ -3,11 +3,7 @@
 {% block content %}
   <h1>{% block title %} Ping {% endblock %}</h1>
 
-  <form method="get">
-    <label for="host">Enter the host:</label>
-    <input type="text" name="host" />
-  </form>
-
+  {% include "base_form.html" %}
   {% include "result.html" %}
   
 {% endblock %}
