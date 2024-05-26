@@ -16,10 +16,10 @@ def index():
 def dig():
     template = "dig.html"
 
-    domain = request.args.get("domain")
-    if domain:
+    host = request.args.get("host")
+    if host:
         url = request.root_url + url_for("api.dig")
-        response = httpx.get(f"{url}?domain={domain}")
+        response = httpx.get(f"{url}?host={host}")
 
         data = response.json()
         return render_template(template, data=data)
@@ -31,10 +31,10 @@ def dig():
 def ping():
     template = "ping.html"
 
-    ip = request.args.get("ip")
-    if ip:
+    host = request.args.get("host")
+    if host:
         url = request.root_url + url_for("api.ping")
-        response = httpx.get(f"{url}?ip={ip}")
+        response = httpx.get(f"{url}?host={host}")
 
         data = response.json()
         return render_template(template, data=data)
@@ -46,10 +46,10 @@ def ping():
 def whois():
     template = "whois.html"
 
-    domain = request.args.get("domain")
-    if domain:
+    host = request.args.get("host")
+    if host:
         url = request.root_url + url_for("api.whois")
-        response = httpx.get(f"{url}?domain={domain}")
+        response = httpx.get(f"{url}?host={host}")
 
         data = response.json()
         return render_template(template, data=data)

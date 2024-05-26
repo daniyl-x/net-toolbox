@@ -8,23 +8,23 @@ api = Blueprint("api", __name__)
 
 @api.get("/dig")
 def dig():
-    domain = request.args.get("domain")
-    data = fn.run_cmd(["dig", domain])
+    host = request.args.get("host")
+    data = fn.run_cmd(["dig", host])
 
     return data
 
 
 @api.get("/ping")
 def ping():
-    ip = request.args.get("ip")
-    data = fn.run_cmd(["ping", "-c", "5", ip])
+    host = request.args.get("host")
+    data = fn.run_cmd(["ping", "-c", "5", host])
 
     return data
 
 
 @api.get("/whois")
 def whois():
-    domain = request.args.get("domain")
-    data = fn.run_cmd(["whois", domain])
+    host = request.args.get("host")
+    data = fn.run_cmd(["whois", host])
 
     return data
