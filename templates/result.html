@@ -1,6 +1,6 @@
-<div class="result">
-  {% if data %}
+{% if data %}
+  <div class="result">
     <h3>Result:</h2> <samp>{{ data.stderr or data.stdout }}</samp>
-  {% endif %}
-</div>
+  </div>
+{% endif %}
 
