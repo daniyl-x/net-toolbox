@@ -42,6 +42,21 @@ def ping():
         return render_template(template)
 
 
+@browser.get("/traceroute")
+def traceroute():
+    template = "traceroute.html"
+
+    host = request.args.get("host")
+    if host:
+        url = request.root_url + url_for("api.traceroute")
+        response = httpx.get(f"{url}?host={host}")
+
+        data = response.json()
+        return render_template(template, data=data)
+    else:
+        return render_template(template)
+
+
 @browser.get("/whois")
 def whois():
     template = "whois.html"
